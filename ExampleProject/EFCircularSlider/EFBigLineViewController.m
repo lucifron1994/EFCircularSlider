@@ -29,6 +29,12 @@
     [circularSlider setInnerMarkingLabels:labels];
     
     [self.view addSubview:circularSlider];
+    
+    [circularSlider addTarget:self action:@selector(change:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)change:(EFCircularSlider *)slider {
+//    NSLog(@"slider %f",slider.currentValue);
 }
 
 - (void)didReceiveMemoryWarning

@@ -31,12 +31,12 @@
 - (void)defaults {
     // Defaults
     _maximumValue = 100.0f;
-    _minimumValue = 0.0f;
-    _currentValue = 0.0f;
+    _minimumValue = 1;
+    _currentValue = 1;
     _lineWidth = 5;
     _lineRadiusDisplacement = 0;
-    _unfilledColor = [UIColor blackColor];
-    _filledColor = [UIColor redColor];
+    _unfilledColor = [UIColor yellowColor];
+    _filledColor = [UIColor orangeColor];
     _handleColor = _filledColor;
     _labelFont = [UIFont systemFontOfSize:10.0f];
     _snapToLabels = NO;
@@ -223,9 +223,16 @@
 }
 
 -(BOOL) continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    [super continueTrackingWithTouch:touch withEvent:event];
-    
     CGPoint lastPoint = [touch locationInView:self];
+    NSLog(@"continue %@",NSStringFromCGPoint(lastPoint));
+    
+//    CGFloat middleValue = self.frame.size.width/2.0;
+//    if (lastPoint.x < middleValue+5 && lastPoint.x > middleValue -5 ) {
+////        [self endTrackingWithTouch:touch withEvent:event];
+//        [self cancelTrackingWithEvent:event];
+//        return NO;
+//    }
+    [super continueTrackingWithTouch:touch withEvent:event];
     [self moveHandle:lastPoint];
     [self sendActionsForControlEvents:UIControlEventValueChanged];
     
